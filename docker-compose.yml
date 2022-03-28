@@ -1,0 +1,17 @@
+version: '3'
+services:
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.1.0
+    volumes:
+      - ./config/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./pipeline:/usr/share/logstash/pipeline
+      - ./logs:/logs
+    stdin_open: true
+    tty: true
+    environment:
+      LS_JAVA_OPTS: "-Xmx512m -Xms512m"    
+    deploy:
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 700M  

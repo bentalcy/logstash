@@ -1,0 +1,4 @@
+---
+path.config: /usr/share/logstash/pipeline
+# automatic reloading will not work with stdin input
+config.reload.automatic: false
